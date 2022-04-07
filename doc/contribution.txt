@@ -1,0 +1,32 @@
+SER 502 Team 37
+
+
+Members
+1. Dennis Polly Pynadath
+2. Saurabh Rane
+3. Sneha Savani
+4. Keshav Sethi
+5. Vashishtha Nareshbhai Patel
+
+
+Contribution to Milestone 1 
+1. Dennis Polly Pynadath
+* Worked on creating grammar for the language
+* Learnt the compiler design concepts.
+
+2. Saurabh Rane
+* Worked on creating grammar for the language
+* Learnt the compiler design concepts.
+
+3. Sneha Savani
+* Setting up the project in git
+* Worked on creating grammar for the language
+* Learnt the compiler design concepts.
+
+4. Keshav Sethi
+* Worked on creating grammar for the language
+* Learnt the compiler design concepts.
+
+5. Vashishtha Nareshbhai Patel
+* Worked on creating grammar for the language
+* Learnt the compiler design concepts.
