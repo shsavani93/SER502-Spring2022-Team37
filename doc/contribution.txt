@@ -1,0 +1,34 @@
+SER 502
+Team 37
+
+
+Members:-
+
+1. Dennis Polly Pynadath
+2. Saurabh Rane
+3. Sneha Savani
+4. Keshav Sethi
+5. Vashishtha Nareshbhai Patel
+
+
+Contribution to Milestone 1:-
+
+1. Dennis Polly Pynadath
+- Designed grammar for the language
+- Researched on Lexical analyzer/ Compiler Design/ Parse Tree/ ANTLR
+
+2. Saurabh Rane
+- Designed grammar for the language
+- Researched on Lexical analyzer/ Compiler Design/ Parse Tree/ ANTLR
+
+3. Sneha Savani
+- Set up a Github repository for the project.
+- Designed grammar for the language
+
+4. Keshav Sethi
+- Designed grammar for the language
+- Researched on Lexical analyzer/ Compiler Design/ Parse Tree/ ANTLR
+
+5. Vashishtha Nareshbhai Patel
+- Designed grammar for the language
+- Researched on Lexical analyzer/ Compiler Design/ Parse Tree/ ANTLR
