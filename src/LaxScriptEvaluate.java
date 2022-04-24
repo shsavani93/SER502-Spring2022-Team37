@@ -1,13 +1,24 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
+
+    static Map<String, Object> evalMemory = new HashMap<>();
 
     @Override
     public Object visitP(LaxScriptParser.PContext ctx) {
-        return super.visitP(ctx);
+        Map<String, Integer> integerMap = new HashMap<>();
+        Map<String, Boolean> booleanMap = new HashMap<>();
+        Map<String, String> stringMap = new HashMap<>();
+        evalMemory.put("string", stringMap);
+        evalMemory.put("integer", integerMap);
+        evalMemory.put("boolean", booleanMap);
+        return super.visitChildren(ctx);
     }
 
     @Override
     public Object visitK(LaxScriptParser.KContext ctx) {
-        return super.visitK(ctx);
+        return visitChildren(ctx);
     }
 
     @Override
