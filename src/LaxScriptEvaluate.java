@@ -1,14 +1,15 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
 
-    static Map<String, Object> evalMemory = new HashMap<>();
+    static Map<String, Map<String, String>> evalMemory = new HashMap<>();
 
     @Override
     public Object visitP(LaxScriptParser.PContext ctx) {
-        Map<String, Integer> integerMap = new HashMap<>();
-        Map<String, Boolean> booleanMap = new HashMap<>();
+        Map<String, String> integerMap = new HashMap<>();
+        Map<String, String> booleanMap = new HashMap<>();
         Map<String, String> stringMap = new HashMap<>();
         evalMemory.put("string", stringMap);
         evalMemory.put("integer", integerMap);
@@ -23,17 +24,23 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
 
     @Override
     public Object visitDeclarationInteger(LaxScriptParser.DeclarationIntegerContext ctx) {
-        return super.visitDeclarationInteger(ctx);
+        String variable = ctx.iden().getText();
+        evalMemory.get("integer").put(variable,null);
+        return 0;
     }
 
     @Override
     public Object visitDeclarationString(LaxScriptParser.DeclarationStringContext ctx) {
-        return super.visitDeclarationString(ctx);
+       String variable = ctx.iden().getText();
+        evalMemory.get("string").put(variable,null);
+        return 0;
     }
 
     @Override
     public Object visitDeclarationBoolean(LaxScriptParser.DeclarationBooleanContext ctx) {
-        return super.visitDeclarationBoolean(ctx);
+        String variable = ctx.iden().getText();
+        evalMemory.get("boolean").put(variable,null);
+        return 0;
     }
 
     @Override
@@ -43,112 +50,308 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
 
     @Override
     public Object visitPrintStr(LaxScriptParser.PrintStrContext ctx) {
-        return super.visitPrintStr(ctx);
+        String lines = ctx.line().getText();
+        System.out.println(lines.replaceAll("[\"]",""));
+        return 0;
     }
 
     @Override
     public Object visitPrintExpr(LaxScriptParser.PrintExprContext ctx) {
-        return super.visitPrintExpr(ctx);
+        System.out.println(visit(ctx.expr()));
+        return 0;
     }
 
     @Override
     public Object visitNumberIntInit(LaxScriptParser.NumberIntInitContext ctx) {
-        return super.visitNumberIntInit(ctx);
+
+        String var = ctx.iden().getText();
+        String number = ctx.num().getText();
+        evalMemory.get("integer").put(var,number);
+        return 0;
     }
 
     @Override
     public Object visitIdentifierIntInit(LaxScriptParser.IdentifierIntInitContext ctx) {
-        return super.visitIdentifierIntInit(ctx);
+        String first_id = ctx.iden(0).getText();
+        String second_id = ctx.iden(1).getText();
+        boolean keyExistsInMemory = false;
+
+        Set<Map.Entry<String, Map<String, String>>> entries = evalMemory.entrySet();
+        for(Map.Entry<String, Map<String, String>> entry : entries) {
+            if (!keyExistsInMemory) {
+                String key = entry.getKey();
+                Map<String, String> intMemoryMapValue = evalMemory.get(key);
+                for (String val: intMemoryMapValue.keySet()) {
+                    if (val.equals(second_id)) {
+                        String keyValue = intMemoryMapValue.get(val);
+                        evalMemory.get("integer").put(first_id, keyValue);
+                        keyExistsInMemory = true;
+                        break;
+                    }
+                }
+            }
+
+        }
+
+        return 0;
     }
 
     @Override
     public Object visitExpressionIntInit(LaxScriptParser.ExpressionIntInitContext ctx) {
-        return super.visitExpressionIntInit(ctx);
+        String identifier = ctx.iden().getText();
+        String result = visit(ctx.expr()).toString();
+        evalMemory.get("integer").put(identifier, result);
+        return 0;
     }
 
     @Override
     public Object visitIdentifierStrInit(LaxScriptParser.IdentifierStrInitContext ctx) {
-        return super.visitIdentifierStrInit(ctx);
+        String first_id = ctx.iden(0).getText();
+        String second_id = ctx.iden(1).getText();
+
+        boolean keyExistsInMemory = false;
+
+        Set<Map.Entry<String, Map<String, String>>> entries = evalMemory.entrySet();
+        for(Map.Entry<String, Map<String, String>> entry : entries) {
+            if (!keyExistsInMemory) {
+                String key = entry.getKey();
+                Map<String, String> stringMemoryMapValue = evalMemory.get(key);
+                for (String val: stringMemoryMapValue.keySet()) {
+                    if (val.equals(second_id)) {
+                        String keyValue = stringMemoryMapValue.get(val);
+                        evalMemory.get("string").put(first_id, keyValue);
+                        keyExistsInMemory = true;
+                        break;
+                    }
+                }
+            }
+
+        }
+
+        return 0;
     }
 
     @Override
     public Object visitSentenceStrInit(LaxScriptParser.SentenceStrInitContext ctx) {
-        return super.visitSentenceStrInit(ctx);
+        String first_id = ctx.iden().getText();
+        String second_id = ctx.line().getText();
+        evalMemory.get("string").put(first_id,second_id);
+        return 0;
     }
 
     @Override
     public Object visitIdentifierBoolInit(LaxScriptParser.IdentifierBoolInitContext ctx) {
-        return super.visitIdentifierBoolInit(ctx);
+        String first_id = ctx.iden(0).getText();
+        String second_id = ctx.iden(1).getText();
+
+        boolean keyExistsInMemory = false;
+
+        Set<Map.Entry<String, Map<String, String>>> entries = evalMemory.entrySet();
+        for(Map.Entry<String, Map<String, String>> entry : entries) {
+            if (!keyExistsInMemory) {
+                String key = entry.getKey();
+                Map<String, String> boolMemoryMapValue = evalMemory.get(key);
+                for (String val: boolMemoryMapValue.keySet()) {
+                    if (val.equals(second_id)) {
+                        String keyValue = boolMemoryMapValue.get(val);
+                        evalMemory.get("boolean").put(first_id, keyValue);
+                        keyExistsInMemory = true;
+                        break;
+                    }
+                }
+            }
+
+        }
+
+        return 0;
     }
 
     @Override
     public Object visitIdentifierBoolVal(LaxScriptParser.IdentifierBoolValContext ctx) {
-        return super.visitIdentifierBoolVal(ctx);
+        String identifier = ctx.iden().getText();
+        String val = ctx.boolVal.getText();
+        evalMemory.get("boolean").put(identifier,val);
+        return 0;
     }
 
     @Override
     public Object visitPreIncrement(LaxScriptParser.PreIncrementContext ctx) {
-        return super.visitPreIncrement(ctx);
+        int count = 0;
+        String identifier = ctx.iden().getText();
+
+        Set<Map.Entry<String, Map<String, String>>> entries = evalMemory.entrySet();
+
+        for(Map.Entry<String, Map<String, String>> entry : entries) {
+                String key = entry.getKey();
+                Map<String, String> intMemoryMapValue = evalMemory.get(key);
+                if(intMemoryMapValue.containsKey(identifier)){
+                    count = Integer.parseInt(intMemoryMapValue.get(identifier));
+                    ++count;
+                    evalMemory.get("integer").put(identifier, String.valueOf(count));
+                }
+        }
+
+        return count;
     }
 
     @Override
     public Object visitPostIncrement(LaxScriptParser.PostIncrementContext ctx) {
-        return super.visitPostIncrement(ctx);
+        int count = 0;
+        String identifier = ctx.iden().getText();
+
+        Set<Map.Entry<String, Map<String, String>>> entries = evalMemory.entrySet();
+
+        for(Map.Entry<String, Map<String, String>> entry : entries) {
+            String key = entry.getKey();
+            Map<String, String> intMemoryMapValue = evalMemory.get(key);
+            if(intMemoryMapValue.containsKey(identifier)){
+                count = Integer.parseInt(intMemoryMapValue.get(identifier));
+                count++;
+                evalMemory.get("integer").put(identifier, String.valueOf(count));
+            }
+        }
+
+        return count;
     }
 
     @Override
     public Object visitPreDecrement(LaxScriptParser.PreDecrementContext ctx) {
-        return super.visitPreDecrement(ctx);
+        int count = 0;
+        String identifier = ctx.iden().getText();
+
+        Set<Map.Entry<String, Map<String, String>>> entries = evalMemory.entrySet();
+
+        for(Map.Entry<String, Map<String, String>> entry : entries) {
+            String key = entry.getKey();
+            Map<String, String> intMemoryMapValue = evalMemory.get(key);
+            if(intMemoryMapValue.containsKey(identifier)){
+                count = Integer.parseInt(intMemoryMapValue.get(identifier));
+                --count;
+                evalMemory.get("integer").put(identifier, String.valueOf(count));
+            }
+        }
+
+        return count;
     }
 
     @Override
     public Object visitPostDecrement(LaxScriptParser.PostDecrementContext ctx) {
-        return super.visitPostDecrement(ctx);
+        int count = 0;
+        String identifier = ctx.iden().getText();
+
+        Set<Map.Entry<String, Map<String, String>>> entries = evalMemory.entrySet();
+
+        for(Map.Entry<String, Map<String, String>> entry : entries) {
+            String key = entry.getKey();
+            Map<String, String> intMemoryMapValue = evalMemory.get(key);
+            if(intMemoryMapValue.containsKey(identifier)){
+                count = Integer.parseInt(intMemoryMapValue.get(identifier));
+                count--;
+                evalMemory.get("integer").put(identifier, String.valueOf(count));
+            }
+        }
+
+        return count;
     }
 
     @Override
     public Object visitTernaryInt(LaxScriptParser.TernaryIntContext ctx) {
-        return super.visitTernaryInt(ctx);
+        int resVal;
+        String identifier = ctx.iden().getText();
+        if((boolean) visit(ctx.cond())) {
+            resVal = Integer.parseInt((String) visit(ctx.expr(0)));
+        } else {
+            resVal = Integer.parseInt((String) visit(ctx.expr(1)));
+        }
+        evalMemory.get("integer").put(identifier, String.valueOf(resVal));
+        return 0;
     }
 
     @Override
     public Object visitTernaryStr(LaxScriptParser.TernaryStrContext ctx) {
-        return super.visitTernaryStr(ctx);
+        String resVal;
+        String identifier = ctx.iden().getText();
+        if((boolean) visit(ctx.cond())) {
+            resVal = ctx.line(0).getText();
+        } else {
+            resVal = ctx.line(1).getText();
+        }
+        evalMemory.get("string").put(identifier, resVal);
+        return 0;
     }
 
     @Override
     public Object visitTernaryBool(LaxScriptParser.TernaryBoolContext ctx) {
-        return super.visitTernaryBool(ctx);
+        String resVal;
+        String id = ctx.iden().getText();
+        if((boolean) visit(ctx.cond())) {
+            resVal = ctx.boolVal.getText();
+        } else {
+            resVal = ctx.boolVal.getText();
+        }
+        evalMemory.get("boolean").put(id, String.valueOf(resVal));
+        return 0;
     }
 
     @Override
     public Object visitConditionOp(LaxScriptParser.ConditionOpContext ctx) {
-        return super.visitConditionOp(ctx);
+        int first_expr = Integer.parseInt(visit(ctx.expr(0)).toString());
+        int second_expr = Integer.parseInt(visit(ctx.expr(1)).toString());
+        String conditionalOperator = ctx.condOp.getText();
+
+        if(conditionalOperator == "<") {
+            return first_expr < second_expr;
+        } else if(conditionalOperator == "<=") {
+            return first_expr <= second_expr;
+        } else if(conditionalOperator == ">") {
+            return first_expr > second_expr;
+        } else if(conditionalOperator == ">=") {
+            return first_expr >= second_expr;
+        } else if(conditionalOperator == "==") {
+            return first_expr == second_expr;
+        } else if(conditionalOperator == "!=") {
+            return first_expr != second_expr;
+        }
+
+        return 0;
     }
 
     @Override
     public Object visitConditionBoolOp(LaxScriptParser.ConditionBoolOpContext ctx) {
-        return super.visitConditionBoolOp(ctx);
+        boolean booleanVal = Boolean.parseBoolean(ctx.boolVal.getText());
+        return booleanVal;
     }
 
     @Override
     public Object visitNumberAssignment(LaxScriptParser.NumberAssignmentContext ctx) {
-        return super.visitNumberAssignment(ctx);
+        String identifier = ctx.iden().getText();
+        String num = ctx.num().getText();
+        evalMemory.get("integer").put(identifier, num);
+        return 0;
     }
 
     @Override
     public Object visitBooleanAssignment(LaxScriptParser.BooleanAssignmentContext ctx) {
-        return super.visitBooleanAssignment(ctx);
+        String identifier = ctx.iden().getText();
+        String val = ctx.boolVal.getText();
+        evalMemory.get("boolean").put(identifier, val);
+        return 0;
     }
 
     @Override
     public Object visitStringAssignment(LaxScriptParser.StringAssignmentContext ctx) {
-        return super.visitStringAssignment(ctx);
+        String identifier = ctx.iden().getText();
+        String line = ctx.line().getText();
+        evalMemory.get("string").put(identifier, line);
+        return 0;
     }
 
     @Override
     public Object visitExpressionAssignment(LaxScriptParser.ExpressionAssignmentContext ctx) {
-        return super.visitExpressionAssignment(ctx);
+        String identifier = ctx.iden().getText();
+        String expr = visit(ctx.expr()).toString();
+        evalMemory.get("integer").put(identifier, expr);
+        return 0;
     }
 
     // yet to be implemented
