@@ -498,5 +498,6 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
     @Override
     public Object visitNum(LaxScriptParser.NumContext ctx) {
         return super.visitNum(ctx);
+        System.out.println('hello');
     }
 }
