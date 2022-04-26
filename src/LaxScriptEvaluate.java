@@ -482,12 +482,13 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
 
     @Override
     public Object visitSentence(LaxScriptParser.SentenceContext ctx) {
-        return super.visitSentence(ctx);
+        System.out.println(ctx.sent_option());
+        return 0;
     }
 
     @Override
     public Object visitIden(LaxScriptParser.IdenContext ctx) {
-        return super.visitIden(ctx);
+        return visitChildren(ctx);;
     }
 
     @Override
@@ -497,7 +498,6 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
 
     @Override
     public Object visitNum(LaxScriptParser.NumContext ctx) {
-        return super.visitNum(ctx);
-        System.out.println('hello');
+        return visitChildren(ctx);
     }
 }
