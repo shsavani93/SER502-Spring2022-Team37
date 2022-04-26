@@ -354,7 +354,6 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
         return 0;
     }
 
-    // yet to be implemented
     @Override
     public Object visitAdditionEqualNum(LaxScriptParser.AdditionEqualNumContext ctx) {
         int value1 = 0;
