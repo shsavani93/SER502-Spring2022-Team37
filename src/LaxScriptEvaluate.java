@@ -360,13 +360,13 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
         int value2 = 0;
         String x = ctx.identifier().getText();
         String y = ctx.number().getText();
-        for(String integer :memory.keySet()){
-            HashMap<String,String> map = memory.get(integer);
+        for(String integer :evalMemory.keySet()){
+            HashMap<String,String> map = evalMemory.get(integer);
             if(map.containsKey(x)){
                 value1= Integer.parseInt(map.get(x));
                 value2= Integer.parseInt(y);
                 value1+=value2;
-                memory.get("INT").put(x, String.valueOf(value1));
+                evalMemory.get("INT").put(x, String.valueOf(value1));
             }
         }
         return 0;
@@ -378,13 +378,13 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
         int value2 = 0;
         String x = ctx.identifier().getText();
         String y = ctx.number().getText();
-        for(String integer :memory.keySet()){
-            HashMap<String,String> map = memory.get(integer);
+        for(String integer :evalMemory.keySet()){
+            HashMap<String,String> map = evalMemory.get(integer);
             if(map.containsKey(x)){
                 value1= Integer.parseInt(map.get(x));
                 value2= Integer.parseInt(y);
                 value1-=value2;
-                memory.get("INT").put(x, String.valueOf(value1));
+                evalMemory.get("INT").put(x, String.valueOf(value1));
             }
         }
         return 0;
@@ -396,13 +396,13 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
         int value2 = 0;
         String x = ctx.identifier().getText();
         String y = ctx.number().getText();
-        for(String integer :memory.keySet()){
-            HashMap<String,String> map = memory.get(integer);
+        for(String integer :evalMemory.keySet()){
+            HashMap<String,String> map = evalMemory.get(integer);
             if(map.containsKey(x)){
                 value1= Integer.parseInt(map.get(x));
                 value2= Integer.parseInt(y);
                 value1*=value2;
-                memory.get("INT").put(x, String.valueOf(value1));
+                evalMemory.get("INT").put(x, String.valueOf(value1));
             }
         }
         return 0;
@@ -414,13 +414,13 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
         int value2 = 0;
         String x = ctx.identifier().getText();
         String y = ctx.number().getText();
-        for(String integer :memory.keySet()){
-            HashMap<String,String> map = memory.get(integer);
+        for(String integer :evalMemory.keySet()){
+            HashMap<String,String> map = evalMemory.get(integer);
             if(map.containsKey(x)){
                 value1= Integer.parseInt(map.get(x));
                 value2= Integer.parseInt(y);
                 value1/=value2;
-                memory.get("INT").put(x, String.valueOf(value1));
+                evalMemory.get("INT").put(x, String.valueOf(value1));
             }
         }
         return 0;
@@ -432,13 +432,13 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
         int value2 = 0;
         String x = ctx.identifier(0).getText();
         String y = ctx.identifier(1).getText();
-        for(String integer :memory.keySet()){
-            HashMap<String,String> map = memory.get(integer);
+        for(String integer :evalMemory.keySet()){
+            HashMap<String,String> map = evalMemory.get(integer);
             if(map.containsKey(x)){
                 value1= Integer.parseInt(map.get(x));
                 value2= Integer.parseInt(map.get(y));
                 value1+=value2;
-                memory.get("INT").put(x, String.valueOf(value1));
+                evalMemory.get("INT").put(x, String.valueOf(value1));
             }
         }
         return 0;
@@ -450,13 +450,13 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
         int value2 = 0;
         String x = ctx.identifier(0).getText();
         String y = ctx.identifier(1).getText();
-        for(String integer :memory.keySet()){
-            HashMap<String,String> map = memory.get(integer);
+        for(String integer :evalMemory.keySet()){
+            HashMap<String,String> map = evalMemory.get(integer);
             if(map.containsKey(x)){
                 value1= Integer.parseInt(map.get(x));
                 value2= Integer.parseInt(map.get(y));
                 value1-=value2;
-                memory.get("INT").put(x, String.valueOf(value1));
+                evalMemory.get("INT").put(x, String.valueOf(value1));
             }
         }
         return 0;
@@ -468,13 +468,13 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
         int value2 = 0;
         String x = ctx.identifier(0).getText();
         String y = ctx.identifier(1).getText();
-        for(String integer :memory.keySet()){
-            HashMap<String,String> map = memory.get(integer);
+        for(String integer :evalMemory.keySet()){
+            HashMap<String,String> map = evalMemory.get(integer);
             if(map.containsKey(x)){
                 value1= Integer.parseInt(map.get(x));
                 value2= Integer.parseInt(map.get(y));
                 value1*=value2;
-                memory.get("INT").put(x, String.valueOf(value1));
+                evalMemory.get("INT").put(x, String.valueOf(value1));
             }
         }
         return 0;
@@ -486,13 +486,13 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
         int value2 = 0;
         String x = ctx.identifier(0).getText();
         String y = ctx.identifier(1).getText();
-        for(String integer :memory.keySet()){
-            HashMap<String,String> map = memory.get(integer);
+        for(String integer :evalMemory.keySet()){
+            HashMap<String,String> map = evalMemory.get(integer);
             if(map.containsKey(x)){
                 value1= Integer.parseInt(map.get(x));
                 value2= Integer.parseInt(map.get(y));
                 value1/=value2;
-                memory.get("INT").put(x, String.valueOf(value1));
+                evalMemory.get("INT").put(x, String.valueOf(value1));
             }
         }
         return 0;
@@ -544,9 +544,9 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
         int value1 = Integer.parseInt(ctx.number(0).getText());
         int value2 = Integer.parseInt(ctx.number(1).getText());
         String str = ctx.identifier().getText();
-        memory.get("INT").put(str,null);
+        evalMemory.get("INT").put(str,null);
         for(int a =value1 ; a < value2; a++ )
-        {   memory.get("INT").put(str, String.valueOf(a));
+        {   evalMemory.get("INT").put(str, String.valueOf(a));
             visit(ctx.block());
         }
         return 0;
@@ -558,9 +558,9 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
         int value2 = Integer.parseInt(ctx.number(1).getText());
         int step = Integer.parseInt(ctx.number(2).getText());
         String str = ctx.identifier().getText();
-        memory.get("INT").put(str,null);
+        evalMemory.get("INT").put(str,null);
         for(int a =value1 ; a < value2; a+=step )
-        {   memory.get("INT").put(str, String.valueOf(a));
+        {   evalMemory.get("INT").put(str, String.valueOf(a));
             visit(ctx.block());
         }
         return 0;
@@ -615,16 +615,16 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
         String id = ctx.identifier().getText();
         if(id.getClass().equals("class java.lang.Integer"))
         {
-            for (String type : memory.keySet()) {
-                HashMap<String, String> map = memory.get(type);
+            for (String type : evalMemory.keySet()) {
+                HashMap<String, String> map = evalMemory.get(type);
                 if (map.containsKey(id)) {
                     value1 = Integer.parseInt(map.get(id));
                 }
             }
             return value1;
         }else{
-            for (String type : memory.keySet()) {
-                HashMap<String, String> map = memory.get(type);
+            for (String type : evalMemory.keySet()) {
+                HashMap<String, String> map = evalMemory.get(type);
                 if (map.containsKey(id)) {
                     value2 = (map.get(id));
                 }
