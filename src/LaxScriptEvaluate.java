@@ -651,7 +651,7 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
 
     @Override
     public Object visitIden(LaxScriptParser.IdenContext ctx) {
-        return visitChildren(ctx);;
+        return visitChildren(ctx);
     }
 
     @Override
