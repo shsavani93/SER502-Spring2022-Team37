@@ -358,15 +358,15 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
     public Object visitAdditionEqualNum(LaxScriptParser.AdditionEqualNumContext ctx) {
         int value1 = 0;
         int value2 = 0;
-        String x = ctx.identifier().getText();
-        String y = ctx.number().getText();
+        String x = ctx.iden().getText();
+        String y = ctx.num().getText();
         for(String integer :evalMemory.keySet()){
-            HashMap<String,String> map = evalMemory.get(integer);
+            Map<String,String> map = evalMemory.get(integer);
             if(map.containsKey(x)){
                 value1= Integer.parseInt(map.get(x));
                 value2= Integer.parseInt(y);
                 value1+=value2;
-                evalMemory.get("INT").put(x, String.valueOf(value1));
+                evalMemory.get("integer").put(x, String.valueOf(value1));
             }
         }
         return 0;
@@ -376,15 +376,15 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
     public Object visitSubtractionEqualNum(LaxScriptParser.SubtractionEqualNumContext ctx) {
         int value1 = 0;
         int value2 = 0;
-        String x = ctx.identifier().getText();
-        String y = ctx.number().getText();
+        String x = ctx.iden().getText();
+        String y = ctx.num().getText();
         for(String integer :evalMemory.keySet()){
-            HashMap<String,String> map = evalMemory.get(integer);
+            Map<String,String> map = evalMemory.get(integer);
             if(map.containsKey(x)){
                 value1= Integer.parseInt(map.get(x));
                 value2= Integer.parseInt(y);
                 value1-=value2;
-                evalMemory.get("INT").put(x, String.valueOf(value1));
+                evalMemory.get("integer").put(x, String.valueOf(value1));
             }
         }
         return 0;
@@ -394,15 +394,15 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
     public Object visitMultiplicationEqualNum(LaxScriptParser.MultiplicationEqualNumContext ctx) {
         int value1 = 0;
         int value2 = 0;
-        String x = ctx.identifier().getText();
-        String y = ctx.number().getText();
+        String x = ctx.iden().getText();
+        String y = ctx.num().getText();
         for(String integer :evalMemory.keySet()){
-            HashMap<String,String> map = evalMemory.get(integer);
+            Map<String,String> map = evalMemory.get(integer);
             if(map.containsKey(x)){
                 value1= Integer.parseInt(map.get(x));
                 value2= Integer.parseInt(y);
                 value1*=value2;
-                evalMemory.get("INT").put(x, String.valueOf(value1));
+                evalMemory.get("integer").put(x, String.valueOf(value1));
             }
         }
         return 0;
@@ -412,15 +412,15 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
     public Object visitDivisionEqualNum(LaxScriptParser.DivisionEqualNumContext ctx) {
         int value1 = 0;
         int value2 = 0;
-        String x = ctx.identifier().getText();
-        String y = ctx.number().getText();
+        String x = ctx.iden().getText();
+        String y = ctx.num().getText();
         for(String integer :evalMemory.keySet()){
-            HashMap<String,String> map = evalMemory.get(integer);
+            Map<String,String> map = evalMemory.get(integer);
             if(map.containsKey(x)){
                 value1= Integer.parseInt(map.get(x));
                 value2= Integer.parseInt(y);
                 value1/=value2;
-                evalMemory.get("INT").put(x, String.valueOf(value1));
+                evalMemory.get("integer").put(x, String.valueOf(value1));
             }
         }
         return 0;
@@ -430,15 +430,15 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
     public Object visitAdditionEqualID(LaxScriptParser.AdditionEqualIDContext ctx) {
         int value1 = 0;
         int value2 = 0;
-        String x = ctx.identifier(0).getText();
-        String y = ctx.identifier(1).getText();
+        String x = ctx.iden(0).getText();
+        String y = ctx.iden(1).getText();
         for(String integer :evalMemory.keySet()){
-            HashMap<String,String> map = evalMemory.get(integer);
+            Map<String,String> map = evalMemory.get(integer);
             if(map.containsKey(x)){
                 value1= Integer.parseInt(map.get(x));
                 value2= Integer.parseInt(map.get(y));
                 value1+=value2;
-                evalMemory.get("INT").put(x, String.valueOf(value1));
+                evalMemory.get("integer").put(x, String.valueOf(value1));
             }
         }
         return 0;
@@ -448,15 +448,15 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
     public Object visitSubtractionEqualID(LaxScriptParser.SubtractionEqualIDContext ctx) {
         int value1 = 0;
         int value2 = 0;
-        String x = ctx.identifier(0).getText();
-        String y = ctx.identifier(1).getText();
+        String x = ctx.iden(0).getText();
+        String y = ctx.iden(1).getText();
         for(String integer :evalMemory.keySet()){
-            HashMap<String,String> map = evalMemory.get(integer);
+            Map<String,String> map = evalMemory.get(integer);
             if(map.containsKey(x)){
                 value1= Integer.parseInt(map.get(x));
                 value2= Integer.parseInt(map.get(y));
                 value1-=value2;
-                evalMemory.get("INT").put(x, String.valueOf(value1));
+                evalMemory.get("integer").put(x, String.valueOf(value1));
             }
         }
         return 0;
@@ -466,15 +466,15 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
     public Object visitMultiplicationEqualID(LaxScriptParser.MultiplicationEqualIDContext ctx) {
         int value1 = 0;
         int value2 = 0;
-        String x = ctx.identifier(0).getText();
-        String y = ctx.identifier(1).getText();
+        String x = ctx.iden(0).getText();
+        String y = ctx.iden(1).getText();
         for(String integer :evalMemory.keySet()){
-            HashMap<String,String> map = evalMemory.get(integer);
+            Map<String,String> map = evalMemory.get(integer);
             if(map.containsKey(x)){
                 value1= Integer.parseInt(map.get(x));
                 value2= Integer.parseInt(map.get(y));
                 value1*=value2;
-                evalMemory.get("INT").put(x, String.valueOf(value1));
+                evalMemory.get("integer").put(x, String.valueOf(value1));
             }
         }
         return 0;
@@ -484,15 +484,15 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
     public Object visitDivisionEqualID(LaxScriptParser.DivisionEqualIDContext ctx) {
         int value1 = 0;
         int value2 = 0;
-        String x = ctx.identifier(0).getText();
-        String y = ctx.identifier(1).getText();
+        String x = ctx.iden(0).getText();
+        String y = ctx.iden(1).getText();
         for(String integer :evalMemory.keySet()){
-            HashMap<String,String> map = evalMemory.get(integer);
+            Map<String,String> map = evalMemory.get(integer);
             if(map.containsKey(x)){
                 value1= Integer.parseInt(map.get(x));
                 value2= Integer.parseInt(map.get(y));
                 value1/=value2;
-                evalMemory.get("INT").put(x, String.valueOf(value1));
+                evalMemory.get("integer").put(x, String.valueOf(value1));
             }
         }
         return 0;
@@ -500,36 +500,36 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
 
     @Override
     public Object visitIfThenCond(LaxScriptParser.IfThenCondContext ctx) {
-        if((boolean)visit(ctx.condition())) {
-            visit(ctx.block());
+        if((boolean)visit(ctx.cond())) {
+            visit(ctx.k());
         }
         return 0;
     }
 
     @Override
     public Object visitIfThenElseCond(LaxScriptParser.IfThenElseCondContext ctx) {
-        if((boolean)visit(ctx.condition())) {
-            visit(ctx.block(0));
+        if((boolean)visit(ctx.cond())) {
+            visit(ctx.k(0));
         } else {
-            visit(ctx.block(1));
+            visit(ctx.k(1));
         }
         return 0;
     }
 
     @Override
     public Object visitWhileLoop(LaxScriptParser.WhileLoopContext ctx) {
-        while((boolean)visit(ctx.condition()))
+        while((boolean)visit(ctx.cond()))
         {
-            visit(ctx.block());
+            visit(ctx.k());
         }
         return 0;
     }
 
     @Override
     public Object visitForLoop(LaxScriptParser.ForLoopContext ctx) {
-        for(visit(ctx.integer());(boolean)visit(ctx.condition());visit(ctx.option()))
+        for(visit(ctx.int_());(boolean)visit(ctx.cond());visit(ctx.option()))
         {
-            visit(ctx.block());
+            visit(ctx.k());
         }
         return 0;
     }
@@ -541,43 +541,43 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
 
     @Override
     public Object visitBasicRangeFormat(LaxScriptParser.BasicRangeFormatContext ctx) {
-        int value1 = Integer.parseInt(ctx.number(0).getText());
-        int value2 = Integer.parseInt(ctx.number(1).getText());
-        String str = ctx.identifier().getText();
-        evalMemory.get("INT").put(str,null);
+        int value1 = Integer.parseInt(ctx.num(0).getText());
+        int value2 = Integer.parseInt(ctx.num(1).getText());
+        String str = ctx.iden().getText();
+        evalMemory.get("integer").put(str,null);
         for(int a =value1 ; a < value2; a++ )
-        {   evalMemory.get("INT").put(str, String.valueOf(a));
-            visit(ctx.block());
+        {   evalMemory.get("integer").put(str, String.valueOf(a));
+            visit(ctx.k());
         }
         return 0;
     }
 
     @Override
     public Object visitStepRangeFormat(LaxScriptParser.StepRangeFormatContext ctx) {
-        int value1 = Integer.parseInt(ctx.number(0).getText());
-        int value2 = Integer.parseInt(ctx.number(1).getText());
-        int step = Integer.parseInt(ctx.number(2).getText());
-        String str = ctx.identifier().getText();
-        evalMemory.get("INT").put(str,null);
+        int value1 = Integer.parseInt(ctx.num(0).getText());
+        int value2 = Integer.parseInt(ctx.num(1).getText());
+        int step = Integer.parseInt(ctx.num(2).getText());
+        String str = ctx.iden().getText();
+        evalMemory.get("integer").put(str,null);
         for(int a =value1 ; a < value2; a+=step )
-        {   evalMemory.get("INT").put(str, String.valueOf(a));
-            visit(ctx.block());
+        {   evalMemory.get("integer").put(str, String.valueOf(a));
+            visit(ctx.k());
         }
         return 0;
     }
 
     @Override
     public Object visitAdd(LaxScriptParser.AddContext ctx) {
-        int str =  Integer.parseInt(String.valueOf(visit(ctx.term())));
-        int y =  Integer.parseInt(String.valueOf(visit(ctx.expression())));
+        int str =  Integer.parseInt(String.valueOf(visit(ctx.element())));
+        int y =  Integer.parseInt(String.valueOf(visit(ctx.expr())));
         int res = str + y;
         return res;
     }
 
     @Override
     public Object visitSubtract(LaxScriptParser.SubtractContext ctx) {
-        int str = Integer.parseInt(String.valueOf(visit(ctx.term())));
-        int y =  Integer.parseInt(String.valueOf(visit(ctx.expression())));
+        int str = Integer.parseInt(String.valueOf(visit(ctx.element())));
+        int y =  Integer.parseInt(String.valueOf(visit(ctx.expr())));
         int res = str - y;
         return res;
     }
@@ -589,16 +589,16 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
 
     @Override
     public Object visitMultiply(LaxScriptParser.MultiplyContext ctx) {
-        int str =  Integer.parseInt(String.valueOf(visit(ctx.factor())));
-        int y =  Integer.parseInt(String.valueOf(visit(ctx.term())));
+        int str =  Integer.parseInt(String.valueOf(visit(ctx.value())));
+        int y =  Integer.parseInt(String.valueOf(visit(ctx.element())));
         int res = str * y;
         return res;
     }
 
     @Override
     public Object visitDivide(LaxScriptParser.DivideContext ctx) {
-        int str =  Integer.parseInt(String.valueOf(visit(ctx.factor())));
-        int y =  Integer.parseInt(String.valueOf(visit(ctx.term())));
+        int str =  Integer.parseInt(String.valueOf(visit(ctx.value())));
+        int y =  Integer.parseInt(String.valueOf(visit(ctx.element())));
         int res = str / y;
         return res;
     }
@@ -612,11 +612,11 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
     public Object visitExprID(LaxScriptParser.ExprIDContext ctx) {
         int value1 = 0;
         String value2 = null;
-        String id = ctx.identifier().getText();
+        String id = ctx.iden().getText();
         if(id.getClass().equals("class java.lang.Integer"))
         {
             for (String type : evalMemory.keySet()) {
-                HashMap<String, String> map = evalMemory.get(type);
+                Map<String, String> map = evalMemory.get(type);
                 if (map.containsKey(id)) {
                     value1 = Integer.parseInt(map.get(id));
                 }
@@ -624,7 +624,7 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
             return value1;
         }else{
             for (String type : evalMemory.keySet()) {
-                HashMap<String, String> map = evalMemory.get(type);
+                Map<String, String> map = evalMemory.get(type);
                 if (map.containsKey(id)) {
                     value2 = (map.get(id));
                 }
@@ -635,12 +635,12 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
 
     @Override
     public Object visitExprNum(LaxScriptParser.ExprNumContext ctx) {
-        return ctx.number().getText();
+        return ctx.num().getText();
     }
 
     @Override
     public Object visitLine(LaxScriptParser.LineContext ctx) {
-        System.out.println(ctx.sent_option());
+        System.out.println(ctx.sentenceOp());
         return 0;
     }
 
