@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="SER502-Spring2022-Team37:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/SER502_Spring2022_Team37_jar</output-path>
-    <root id="archive" name="SER502-Spring2022-Team37.jar">
-      <element id="module-output" name="SER502-Spring2022-Team37" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/data/antlr-4.10.1-complete.jar" path-in-jar="/" />
-    </root>
-  </artifact>
-</component>
