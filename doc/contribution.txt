@@ -28,6 +28,7 @@ Contribution to Milestone 1:-
 4. Keshav Sethi
 - Built test files and tested the entire application
 - Integration of the Grammar and Evaluate files
+- Tested that the generated parse tree is coherent with Grammar for all Laxscript features
 - Designed grammar for the language
 - Researched on Parse Tree
 
