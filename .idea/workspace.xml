@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="SER502-Spring2022-Team37:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4a97ec75-dfc4-4907-a73f-59e43360e78b" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="28S5t18nv2OFZVYJR6vm9dFcLmY" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="exceleditor.install" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a97ec75-dfc4-4907-a73f-59e43360e78b" name="Default Changelist" comment="" />
+      <created>1651197356426</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1651197356426</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="633" y="331" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1651197958856">
+      <screen x="0" y="25" width="1792" height="1027" />
+    </state>
+    <state x="633" y="331" key="#com.intellij.ide.util.TreeClassChooserDialog/0.25.1792.1027@0.25.1792.1027" timestamp="1651197958856" />
+    <state x="384" y="115" key="SettingsEditor" timestamp="1651197962234">
+      <screen x="0" y="25" width="1792" height="1027" />
+    </state>
+    <state x="384" y="115" key="SettingsEditor/0.25.1792.1024@0.25.1792.1024" timestamp="1651196695554" />
+    <state x="384" y="115" key="SettingsEditor/0.25.1792.1027@0.25.1792.1027" timestamp="1651197962234" />
+  </component>
+</project>
