@@ -1,0 +1,9 @@
+int x = 5;
+int fact = 1;
+    
+while(x > 0) {
+    fact *= x;
+    x--;
+}
+print(fact);
+.
