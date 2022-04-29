@@ -1,0 +1,14 @@
+int x = 5;
+print("Let there be a number x with value 5");
+
+int y = 10;
+print("Let there be a number y with value 10");
+
+print("We want ternary operator to tell which is the smaller of the two");
+
+int smaller = x > y ? y : x;
+print("The smaller number is ");
+print(smaller);
+
+.
+

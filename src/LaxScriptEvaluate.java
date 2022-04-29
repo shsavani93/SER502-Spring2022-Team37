@@ -31,7 +31,7 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
 
     @Override
     public Object visitDeclarationString(LaxScriptParser.DeclarationStringContext ctx) {
-       String variable = ctx.iden().getText();
+        String variable = ctx.iden().getText();
         evalMemory.get("string").put(variable,null);
         return 0;
     }
@@ -182,13 +182,13 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
         Set<Map.Entry<String, Map<String, String>>> entries = evalMemory.entrySet();
 
         for(Map.Entry<String, Map<String, String>> entry : entries) {
-                String key = entry.getKey();
-                Map<String, String> intMemoryMapValue = evalMemory.get(key);
-                if(intMemoryMapValue.containsKey(identifier)){
-                    count = Integer.parseInt(intMemoryMapValue.get(identifier));
-                    ++count;
-                    evalMemory.get("integer").put(identifier, String.valueOf(count));
-                }
+            String key = entry.getKey();
+            Map<String, String> intMemoryMapValue = evalMemory.get(key);
+            if(intMemoryMapValue.containsKey(identifier)){
+                count = Integer.parseInt(intMemoryMapValue.get(identifier));
+                ++count;
+                evalMemory.get("integer").put(identifier, String.valueOf(count));
+            }
         }
 
         return count;
@@ -299,18 +299,32 @@ public class LaxScriptEvaluate extends LaxScriptBaseVisitor{
         int second_expr = Integer.parseInt(visit(ctx.expr(1)).toString());
         String conditionalOperator = ctx.condOp.getText();
 
-        if(conditionalOperator == "<") {
-            return first_expr < second_expr;
-        } else if(conditionalOperator == "<=") {
-            return first_expr <= second_expr;
-        } else if(conditionalOperator == ">") {
-            return first_expr > second_expr;
-        } else if(conditionalOperator == ">=") {
-            return first_expr >= second_expr;
-        } else if(conditionalOperator == "==") {
-            return first_expr == second_expr;
-        } else if(conditionalOperator == "!=") {
-            return first_expr != second_expr;
+//        if(conditionalOperator == "<") {
+//            return first_expr < second_expr;
+//        } else if(conditionalOperator == "<=") {
+//            return first_expr <= second_expr;
+//        } else if(conditionalOperator == ">") {
+//            return first_expr > second_expr;
+//        } else if(conditionalOperator == ">=") {
+//            return first_expr >= second_expr;
+//        } else if(conditionalOperator == "==") {
+//            return first_expr == second_expr;
+//        } else if(conditionalOperator == "!=") {
+//            return first_expr != second_expr;
+//        }
+        switch (conditionalOperator) {
+            case "==":
+                return first_expr == second_expr;
+            case "<":
+                return first_expr < second_expr;
+            case ">":
+                return first_expr > second_expr;
+            case "<=":
+                return first_expr <= second_expr;
+            case ">=":
+                return first_expr >= second_expr;
+            case "!=":
+                return first_expr != second_expr;
         }
 
         return 0;
