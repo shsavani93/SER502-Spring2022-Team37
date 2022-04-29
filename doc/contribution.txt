@@ -26,6 +26,8 @@ Contribution to Milestone 1:-
 - Designed grammar for the language
 
 4. Keshav Sethi
+- Built test files and tested the entire application
+- Integration of the Grammar and Evaluate files
 - Designed grammar for the language
 - Researched on Parse Tree
 
