@@ -46,3 +46,5 @@ Contribution to Milestone 1:-
 5. Vashishtha Nareshbhai Patel
 - Designed grammar for the language
 - Researched on ANTLR
+- Implemented main class that varifies file extension, stores data that are taken fron LaxScriptLexer 
+  and create parse tree according to it.
