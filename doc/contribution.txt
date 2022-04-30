@@ -16,6 +16,9 @@ Contribution to Milestone 1:-
 1. Dennis Polly Pynadath
 - Designed grammar for the language
 - Researched on Lexical analyzer
+- Implemented Grammar on ANTLR
+- Generated ANTLR Files
+- Tested system and developed test cases
 
 2. Saurabh Rane
 - Designed grammar for the language
