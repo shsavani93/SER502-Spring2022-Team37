@@ -23,6 +23,9 @@ Contribution to Milestone 1:-
 2. Saurabh Rane
 - Designed grammar for the language
 - Researched on Compiler Design
+- Implemented Arithmetic functions like Addition, Subtraction, Division, Multiplication.
+- Implemented visit function for each Arithmetic function.
+- Implemeted visit function for Expression, Special Character, Factorization, Line.
 
 3. Sneha Savani
 - Set up a Github repository for the project.
