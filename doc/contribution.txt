@@ -27,6 +27,9 @@ Contribution to Milestone 1:-
 3. Sneha Savani
 - Set up a Github repository for the project.
 - Designed grammar for the language
+- Created LaxScriptEvaluate class which overrides functions from LaxScriptBaseVisitor
+- Implemented functions to visit program, block, ternary operators, pre and post increment & decrement, initialization,
+  identifier and print for int, string and boolean datatype.
 
 4. Keshav Sethi
 - Built test files and tested the entire application
