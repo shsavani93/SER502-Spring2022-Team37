@@ -19,6 +19,7 @@ Contribution to Milestone 1:-
 - Implemented Grammar on ANTLR
 - Generated ANTLR Files
 - Tested system and developed test cases
+- Created shell script to run testcases
 
 2. Saurabh Rane
 - Designed grammar for the language
