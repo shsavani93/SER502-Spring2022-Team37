@@ -31,6 +31,7 @@ chmod 777 *.lax
 ```
 
 ##### Compile test files
+Go to directory with shell.sh file in it.
 ```
 ./shell.sh testfileName.lax
 ```
